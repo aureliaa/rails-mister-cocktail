@@ -5,17 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-10.times do
-  cocktail = Cocktail.new(
-    name: "Mojito"
-    )
-  cocktail.save
-  3.times do
+ingredients = %w(eau vin sucre oeuf farine chocolat)
 
-  Ingredient.create(name: "lemon")
-  Ingredient.create(name: "ice")
-  Ingredient.create(name: "mint leaves")
+ingredients.each do |ingredient|
+  Ingredient.create(name:ingredient)
 end
-
-end
-

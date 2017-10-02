@@ -3,10 +3,13 @@ class DosesController < ApplicationController
   def new
     @dose = Dose.new
     @cocktail = Cocktail.find(params[:cocktail_id])
+    @ingredients = Ingredient.all
   end
 
   def create
     @dose = Dose.new(dose_params)
+    @cocktail = Cocktail.find(params[:cocktail_id])
+    @dose.cocktail = @cocktail
     if @dose.save
       redirect_to cocktail_path(@dose.cocktail)
     else
@@ -26,5 +29,3 @@ class DosesController < ApplicationController
   end
 
 end
-
-#<Dose id: nil, description: "6cl", ingredient_id: nil, cocktail_id: 353, created_at: nil, updated_at: nil>.persisted?`
