@@ -44,3 +44,6 @@ class CocktailsController < ApplicationController
     params.require(:cocktail).permit(:name, :photo, :photo_cache)
   end
 end
+
+
+
