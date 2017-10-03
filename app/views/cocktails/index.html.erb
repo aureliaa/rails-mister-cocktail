@@ -1,5 +1,7 @@
 <% @cocktails.each do |cocktail| %>
   <p><%= link_to "#{cocktail.name}", cocktail_path(cocktail) %></p>
+    <%= cl_image_tag cocktail.photo.url(:thumbnail), crop: :fill %>
+
 <% end %>
 
 <%= link_to "Add a cocktail", new_cocktail_path, class: "btn btn-primary"%>
