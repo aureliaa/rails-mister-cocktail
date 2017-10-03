@@ -5,8 +5,24 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-ingredients = %w(eau vin sucre citron menthe jin rhum orange vanille grenadine soda)
+require 'json'
+require 'open-uri'
 
+Cocktail.destroy_all
+Ingredient.destroy_all
+
+url = "http://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Cocktail_glass"
+user_serialized = open(url).read
+user = JSON.parse(open(url).read)["drinks"].first(20)
+user.each do |item|
+  new_url = item['strDrinkThumb']
+  cocktail = Cocktail.new(name: item["strDrink"])
+  cocktail.remote_photo_url = new_url
+  cocktail.save
+end
+
+
+ingredients = %w(lemon ice mint leaves redbull jagermeister sugar tonic gin rhum)
 ingredients.each do |ingredient|
   Ingredient.create(name:ingredient)
 end
