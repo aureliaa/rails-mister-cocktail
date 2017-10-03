@@ -1,3 +1,4 @@
+  <div class="container main-container text-center">
   <h2><%= @cocktail.name %></h2>
   <%= cl_image_tag @cocktail.photo.url(:standard), crop: :fill %>
   <h4>Ingredients</h4>
@@ -13,10 +14,11 @@
   <p><%= simple_form_for [@cocktail, @dose] do |f| %>
   <%= f.input :description %>
   <%= f.input :ingredient_id, collection: @ingredients %>
-  <%= f.submit "add a dose", class: "btn btn-primary" %>
+  <%= f.submit "Add a dose", class: "btn btn-primary" %>
   <% end %></p>
 
-  <%= link_to "Go to home page", cocktails_path, class: "btn btn-primary"%>
+  <%= link_to "Go to see all the cocktails", cocktails_path, class: "btn btn-primary"%>
+</div>
 
 
 
